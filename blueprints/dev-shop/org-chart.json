@@ -1,0 +1,70 @@
+{
+  "nodes": [
+    {
+      "id": "cto",
+      "name": "CTO",
+      "role": "cto",
+      "title": "Chief Technology Officer",
+      "icon": "⚙️",
+      "level": 0
+    },
+    {
+      "id": "engineer-1",
+      "name": "Senior Engineer",
+      "role": "engineer",
+      "title": "Senior Software Engineer",
+      "icon": "💻",
+      "level": 1,
+      "parent": "cto"
+    },
+    {
+      "id": "engineer-2",
+      "name": "Engineer",
+      "role": "engineer",
+      "title": "Software Engineer",
+      "icon": "💻",
+      "level": 1,
+      "parent": "cto"
+    },
+    {
+      "id": "qa",
+      "name": "QA Engineer",
+      "role": "qa",
+      "title": "QA Engineer",
+      "icon": "✅",
+      "level": 1,
+      "parent": "cto"
+    },
+    {
+      "id": "devops",
+      "name": "DevOps Engineer",
+      "role": "devops",
+      "title": "DevOps Engineer",
+      "icon": "🚀",
+      "level": 1,
+      "parent": "cto"
+    }
+  ],
+  "edges": [
+    {
+      "from": "cto",
+      "to": "engineer-1",
+      "type": "reports_to"
+    },
+    {
+      "from": "cto",
+      "to": "engineer-2",
+      "type": "reports_to"
+    },
+    {
+      "from": "cto",
+      "to": "qa",
+      "type": "reports_to"
+    },
+    {
+      "from": "cto",
+      "to": "devops",
+      "type": "reports_to"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "nodes": [
+    {
+      "id": "editor-in-chief",
+      "name": "Editor-in-Chief",
+      "role": "editor",
+      "title": "Editor-in-Chief",
+      "icon": "✍️",
+      "level": 0
+    },
+    {
+      "id": "writer-1",
+      "name": "Senior Writer",
+      "role": "writer",
+      "title": "Senior Content Writer",
+      "icon": "📝",
+      "level": 1,
+      "parent": "editor-in-chief"
+    },
+    {
+      "id": "writer-2",
+      "name": "Content Writer",
+      "role": "writer",
+      "title": "Content Writer",
+      "icon": "📝",
+      "level": 1,
+      "parent": "editor-in-chief"
+    },
+    {
+      "id": "writer-3",
+      "name": "Content Writer",
+      "role": "writer",
+      "title": "Content Writer",
+      "icon": "📝",
+      "level": 1,
+      "parent": "editor-in-chief"
+    },
+    {
+      "id": "seo-analyst",
+      "name": "SEO Analyst",
+      "role": "seo",
+      "title": "SEO Analyst",
+      "icon": "📈",
+      "level": 1,
+      "parent": "editor-in-chief"
+    },
+    {
+      "id": "social-manager",
+      "name": "Social Media Manager",
+      "role": "social",
+      "title": "Social Media Manager",
+      "icon": "📱",
+      "level": 1,
+      "parent": "editor-in-chief"
+    }
+  ],
+  "edges": [
+    {
+      "from": "editor-in-chief",
+      "to": "writer-1",
+      "type": "reports_to"
+    },
+    {
+      "from": "editor-in-chief",
+      "to": "writer-2",
+      "type": "reports_to"
+    },
+    {
+      "from": "editor-in-chief",
+      "to": "writer-3",
+      "type": "reports_to"
+    },
+    {
+      "from": "editor-in-chief",
+      "to": "seo-analyst",
+      "type": "reports_to"
+    },
+    {
+      "from": "editor-in-chief",
+      "to": "social-manager",
+      "type": "reports_to"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "approvalRules": [
+    {
+      "trigger": "hire_agent",
+      "threshold": null,
+      "approverRole": "ceo",
+      "description": "All new agent hires must be approved by CEO"
+    },
+    {
+      "trigger": "budget_exceed",
+      "threshold": 10000,
+      "approverRole": "ceo",
+      "description": "CEO approval required for expenses over $100"
+    },
+    {
+      "trigger": "deploy_production",
+      "threshold": null,
+      "approverRole": "cto",
+      "description": "CTO must approve all production deployments"
+    },
+    {
+      "trigger": "security_change",
+      "threshold": null,
+      "approverRole": "cto",
+      "description": "CTO reviews all security-related changes"
+    }
+  ],
+  "budgetDefaults": [
+    {
+      "role": "ceo",
+      "monthlyCents": 50000,
+      "description": "$500/month for strategic work and coordination"
+    },
+    {
+      "role": "cto",
+      "monthlyCents": 40000,
+      "description": "$400/month for architecture and code review"
+    },
+    {
+      "role": "engineer",
+      "monthlyCents": 30000,
+      "description": "$300/month per engineer for feature development"
+    },
+    {
+      "role": "cmo",
+      "monthlyCents": 30000,
+      "description": "$300/month for marketing and growth work"
+    }
+  ],
+  "escalationChain": [
+    {
+      "level": 1,
+      "role": "cto",
+      "description": "Technical issues escalate to CTO first"
+    },
+    {
+      "level": 2,
+      "role": "ceo",
+      "description": "Unresolved issues escalate to CEO"
+    }
+  ],
+  "policies": {
+    "codeReviewRequired": true,
+    "minApprovals": 1,
+    "deploymentWindow": "anytime",
+    "incidentResponseOwner": "cto",
+    "budgetReviewCycle": "monthly"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "approvalRules": [
+    {
+      "trigger": "hire_agent",
+      "threshold": null,
+      "approverRole": "ceo",
+      "description": "CEO approves all hiring"
+    },
+    {
+      "trigger": "budget_exceed",
+      "threshold": 5000,
+      "approverRole": "ceo",
+      "description": "CEO approval required for expenses over $50"
+    },
+    {
+      "trigger": "major_decision",
+      "threshold": null,
+      "approverRole": "ceo",
+      "description": "CEO makes all major strategic decisions"
+    }
+  ],
+  "budgetDefaults": [
+    {
+      "role": "ceo",
+      "monthlyCents": 35000,
+      "description": "$350/month for strategic leadership"
+    },
+    {
+      "role": "engineer",
+      "monthlyCents": 30000,
+      "description": "$300/month for product development"
+    },
+    {
+      "role": "marketer",
+      "monthlyCents": 25000,
+      "description": "$250/month for growth and marketing"
+    },
+    {
+      "role": "ops",
+      "monthlyCents": 20000,
+      "description": "$200/month for operations and support"
+    }
+  ],
+  "escalationChain": [
+    {
+      "level": 1,
+      "role": "ceo",
+      "description": "All issues escalate directly to CEO"
+    }
+  ],
+  "policies": {
+    "decisionSpeed": "fast",
+    "approvalLayers": "minimal",
+    "teamSize": "lean",
+    "focusMode": "execution"
+  }
+}
