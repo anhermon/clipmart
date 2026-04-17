@@ -57,7 +57,7 @@ ClipMart uses [Drizzle ORM](https://orm.drizzle.team/) with PostgreSQL. Configur
 
 ## Contributing
 
-ClipMart is the evolution of the Foundry project — a self-evolving company runtime framework. This marketplace enables the exchange and deployment of company archetypes built on that runtime.
+This marketplace enables the exchange and deployment of company archetypes for AI-agent organizations.
 
 ## License
 
