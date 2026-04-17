@@ -1,0 +1,70 @@
+{
+  "nodes": [
+    {
+      "id": "ceo",
+      "name": "CEO",
+      "role": "ceo",
+      "title": "Chief Executive Officer",
+      "icon": "👔",
+      "level": 0
+    },
+    {
+      "id": "cto",
+      "name": "CTO",
+      "role": "cto",
+      "title": "Chief Technology Officer",
+      "icon": "⚙️",
+      "level": 1,
+      "parent": "ceo"
+    },
+    {
+      "id": "cmo",
+      "name": "CMO",
+      "role": "cmo",
+      "title": "Chief Marketing Officer",
+      "icon": "📊",
+      "level": 1,
+      "parent": "ceo"
+    },
+    {
+      "id": "engineer-1",
+      "name": "Senior Engineer",
+      "role": "engineer",
+      "title": "Senior Software Engineer",
+      "icon": "💻",
+      "level": 2,
+      "parent": "cto"
+    },
+    {
+      "id": "engineer-2",
+      "name": "Engineer",
+      "role": "engineer",
+      "title": "Software Engineer",
+      "icon": "💻",
+      "level": 2,
+      "parent": "cto"
+    }
+  ],
+  "edges": [
+    {
+      "from": "ceo",
+      "to": "cto",
+      "type": "reports_to"
+    },
+    {
+      "from": "ceo",
+      "to": "cmo",
+      "type": "reports_to"
+    },
+    {
+      "from": "cto",
+      "to": "engineer-1",
+      "type": "reports_to"
+    },
+    {
+      "from": "cto",
+      "to": "engineer-2",
+      "type": "reports_to"
+    }
+  ]
+}

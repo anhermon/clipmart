@@ -1,0 +1,190 @@
+{
+  "listingId": "saas-startup-v1",
+  "companyDefaults": {
+    "name": "SaaS Startup",
+    "defaultModel": "claude-sonnet-4-6",
+    "defaultAdapter": "claude_local"
+  },
+  "agents": [
+    {
+      "slug": "ceo",
+      "name": "CEO",
+      "role": "ceo",
+      "title": "Chief Executive Officer",
+      "icon": "👔",
+      "capabilities": "Strategic leadership, investor relations, product vision, team coordination, high-level decision making",
+      "promptTemplate": "./agents/ceo/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-opus-4-6",
+        "effort": "high",
+        "maxTurnsPerRun": 150
+      },
+      "instructionsPath": "./agents/ceo/AGENTS.md",
+      "skills": ["paperclip", "research", "search"],
+      "budgetMonthlyCents": 50000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": true
+      }
+    },
+    {
+      "slug": "cto",
+      "name": "CTO",
+      "role": "cto",
+      "title": "Chief Technology Officer",
+      "icon": "⚙️",
+      "capabilities": "Technical architecture, infrastructure decisions, code review, engineering management, security oversight",
+      "promptTemplate": "./agents/cto/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "high",
+        "maxTurnsPerRun": 200
+      },
+      "instructionsPath": "./agents/cto/AGENTS.md",
+      "skills": ["code-review", "simplify", "explore", "paperclip"],
+      "budgetMonthlyCents": 40000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": true
+      }
+    },
+    {
+      "slug": "engineer-1",
+      "name": "Senior Engineer",
+      "role": "engineer",
+      "title": "Senior Software Engineer",
+      "icon": "💻",
+      "capabilities": "Full-stack development, feature implementation, bug fixes, testing, PR reviews, deployment",
+      "promptTemplate": "./agents/engineer-1/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "high",
+        "maxTurnsPerRun": 300
+      },
+      "instructionsPath": "./agents/engineer-1/AGENTS.md",
+      "skills": ["code-review", "simplify", "explore", "claude-api"],
+      "budgetMonthlyCents": 30000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": false
+      }
+    },
+    {
+      "slug": "engineer-2",
+      "name": "Engineer",
+      "role": "engineer",
+      "title": "Software Engineer",
+      "icon": "💻",
+      "capabilities": "Feature implementation, bug fixes, testing, documentation, code maintenance",
+      "promptTemplate": "./agents/engineer-2/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "high",
+        "maxTurnsPerRun": 300
+      },
+      "instructionsPath": "./agents/engineer-2/AGENTS.md",
+      "skills": ["simplify", "explore", "claude-api"],
+      "budgetMonthlyCents": 25000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": false
+      }
+    },
+    {
+      "slug": "cmo",
+      "name": "CMO",
+      "role": "cmo",
+      "title": "Chief Marketing Officer",
+      "icon": "📊",
+      "capabilities": "Marketing strategy, content creation, SEO, social media, growth experiments, analytics",
+      "promptTemplate": "./agents/cmo/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "maxTurnsPerRun": 150
+      },
+      "instructionsPath": "./agents/cmo/AGENTS.md",
+      "skills": ["research", "search", "paperclip"],
+      "budgetMonthlyCents": 30000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": false
+      }
+    }
+  ],
+  "reportingChain": [
+    {
+      "agentSlug": "ceo",
+      "reportsTo": null
+    },
+    {
+      "agentSlug": "cto",
+      "reportsTo": "ceo"
+    },
+    {
+      "agentSlug": "cmo",
+      "reportsTo": "ceo"
+    },
+    {
+      "agentSlug": "engineer-1",
+      "reportsTo": "cto"
+    },
+    {
+      "agentSlug": "engineer-2",
+      "reportsTo": "cto"
+    }
+  ],
+  "governance": {
+    "approvalRules": [
+      {
+        "trigger": "hire_agent",
+        "threshold": null,
+        "approverRole": "ceo"
+      },
+      {
+        "trigger": "budget_exceed",
+        "threshold": 10000,
+        "approverRole": "ceo"
+      },
+      {
+        "trigger": "deploy_production",
+        "threshold": null,
+        "approverRole": "cto"
+      }
+    ],
+    "budgetDefaults": [
+      {
+        "role": "ceo",
+        "monthlyCents": 50000
+      },
+      {
+        "role": "cto",
+        "monthlyCents": 40000
+      },
+      {
+        "role": "engineer",
+        "monthlyCents": 30000
+      },
+      {
+        "role": "cmo",
+        "monthlyCents": 30000
+      }
+    ],
+    "escalationChain": ["cto", "ceo"]
+  },
+  "projects": [
+    {
+      "name": "Product Development",
+      "description": "Main product development workspace",
+      "workspace": {
+        "cwd": null,
+        "repoUrl": null
+      }
+    }
+  ]
+}

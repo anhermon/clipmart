@@ -1,0 +1,72 @@
+{
+  "approvalRules": [
+    {
+      "trigger": "hire_agent",
+      "threshold": null,
+      "approverRole": "cto",
+      "description": "CTO approves all new agent hires"
+    },
+    {
+      "trigger": "budget_exceed",
+      "threshold": 10000,
+      "approverRole": "cto",
+      "description": "CTO approval required for expenses over $100"
+    },
+    {
+      "trigger": "deploy_client_production",
+      "threshold": null,
+      "approverRole": "cto",
+      "description": "CTO must approve all client production deployments"
+    },
+    {
+      "trigger": "client_scope_change",
+      "threshold": null,
+      "approverRole": "cto",
+      "description": "CTO reviews all scope changes with client"
+    },
+    {
+      "trigger": "security_change",
+      "threshold": null,
+      "approverRole": "cto",
+      "description": "CTO reviews all security-related changes"
+    }
+  ],
+  "budgetDefaults": [
+    {
+      "role": "cto",
+      "monthlyCents": 45000,
+      "description": "$450/month for technical leadership and client management"
+    },
+    {
+      "role": "engineer",
+      "monthlyCents": 32500,
+      "description": "$325/month per engineer for development work"
+    },
+    {
+      "role": "qa",
+      "monthlyCents": 25000,
+      "description": "$250/month for QA and testing work"
+    },
+    {
+      "role": "devops",
+      "monthlyCents": 30000,
+      "description": "$300/month for infrastructure and deployment work"
+    }
+  ],
+  "escalationChain": [
+    {
+      "level": 1,
+      "role": "cto",
+      "description": "All issues escalate to CTO"
+    }
+  ],
+  "policies": {
+    "codeReviewRequired": true,
+    "minApprovals": 1,
+    "qaSignoffRequired": true,
+    "deploymentWindow": "business_hours",
+    "incidentResponseOwner": "cto",
+    "budgetReviewCycle": "monthly",
+    "clientCommunicationOwner": "cto"
+  }
+}
