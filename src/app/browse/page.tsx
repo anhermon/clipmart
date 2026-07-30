@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, Suspense, useEffect, useMemo, useState } from "react";
 import { slugify } from "@/lib/slug";
 
 type ListingType =
@@ -157,6 +157,14 @@ function BrowseSkeleton() {
 }
 
 export default function BrowsePage() {
+  return (
+    <Suspense fallback={<BrowseSkeleton />}>
+      <BrowsePageContent />
+    </Suspense>
+  );
+}
+
+function BrowsePageContent() {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();

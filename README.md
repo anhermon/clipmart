@@ -61,4 +61,4 @@ ClipMart is the evolution of the Foundry project — a self-evolving company run
 
 ## License
 
-See [LICENSE](LICENSE) for details.
+No license file yet — all rights reserved by default until one is added.
