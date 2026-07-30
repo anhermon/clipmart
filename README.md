@@ -32,9 +32,15 @@ Open [http://localhost:3000](http://localhost:3000) to see the marketplace.
 To build for production:
 
 ```bash
-npm run build
+DATABASE_URL=postgres://… npm run build
 npm start
 ```
+
+`DATABASE_URL` is required **at build time**, not just at runtime: `/creators` is
+statically generated and queries the database while the page is being built.
+Without it the build fails partway through — Drizzle falls back to connecting to a
+local database named after your shell user, which almost certainly does not exist.
+`npm run dev` has no such requirement.
 
 ### Database
 
