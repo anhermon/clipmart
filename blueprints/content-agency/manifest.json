@@ -1,0 +1,216 @@
+{
+  "listingId": "content-agency-v1",
+  "companyDefaults": {
+    "name": "Content Agency",
+    "defaultModel": "claude-sonnet-4-6",
+    "defaultAdapter": "claude_local"
+  },
+  "agents": [
+    {
+      "slug": "editor-in-chief",
+      "name": "Editor-in-Chief",
+      "role": "editor",
+      "title": "Editor-in-Chief",
+      "icon": "✍️",
+      "capabilities": "Editorial leadership, content strategy, quality control, writer management, client communication",
+      "promptTemplate": "./agents/editor-in-chief/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-opus-4-6",
+        "effort": "high",
+        "maxTurnsPerRun": 150
+      },
+      "instructionsPath": "./agents/editor-in-chief/AGENTS.md",
+      "skills": ["research", "search", "paperclip"],
+      "budgetMonthlyCents": 40000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": true
+      }
+    },
+    {
+      "slug": "writer-1",
+      "name": "Senior Writer",
+      "role": "writer",
+      "title": "Senior Content Writer",
+      "icon": "📝",
+      "capabilities": "Long-form content, thought leadership, complex topics, editorial guidance, writer mentorship",
+      "promptTemplate": "./agents/writer-1/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "high",
+        "maxTurnsPerRun": 200
+      },
+      "instructionsPath": "./agents/writer-1/AGENTS.md",
+      "skills": ["research", "search"],
+      "budgetMonthlyCents": 30000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": false
+      }
+    },
+    {
+      "slug": "writer-2",
+      "name": "Content Writer",
+      "role": "writer",
+      "title": "Content Writer",
+      "icon": "📝",
+      "capabilities": "Blog posts, articles, web copy, product content, email campaigns",
+      "promptTemplate": "./agents/writer-2/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "maxTurnsPerRun": 150
+      },
+      "instructionsPath": "./agents/writer-2/AGENTS.md",
+      "skills": ["research", "search"],
+      "budgetMonthlyCents": 25000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": false
+      }
+    },
+    {
+      "slug": "writer-3",
+      "name": "Content Writer",
+      "role": "writer",
+      "title": "Content Writer",
+      "icon": "📝",
+      "capabilities": "Blog posts, articles, web copy, social content, newsletters",
+      "promptTemplate": "./agents/writer-3/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "maxTurnsPerRun": 150
+      },
+      "instructionsPath": "./agents/writer-3/AGENTS.md",
+      "skills": ["research", "search"],
+      "budgetMonthlyCents": 25000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": false
+      }
+    },
+    {
+      "slug": "seo-analyst",
+      "name": "SEO Analyst",
+      "role": "seo",
+      "title": "SEO Analyst",
+      "icon": "📈",
+      "capabilities": "Keyword research, SEO optimization, technical SEO, analytics, content performance tracking",
+      "promptTemplate": "./agents/seo-analyst/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "maxTurnsPerRun": 150
+      },
+      "instructionsPath": "./agents/seo-analyst/AGENTS.md",
+      "skills": ["research", "search", "paperclip"],
+      "budgetMonthlyCents": 25000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": false
+      }
+    },
+    {
+      "slug": "social-manager",
+      "name": "Social Media Manager",
+      "role": "social",
+      "title": "Social Media Manager",
+      "icon": "📱",
+      "capabilities": "Social media strategy, community management, content distribution, engagement, trend monitoring",
+      "promptTemplate": "./agents/social-manager/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "maxTurnsPerRun": 150
+      },
+      "instructionsPath": "./agents/social-manager/AGENTS.md",
+      "skills": ["research", "search", "paperclip"],
+      "budgetMonthlyCents": 25000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": false
+      }
+    }
+  ],
+  "reportingChain": [
+    {
+      "agentSlug": "editor-in-chief",
+      "reportsTo": null
+    },
+    {
+      "agentSlug": "writer-1",
+      "reportsTo": "editor-in-chief"
+    },
+    {
+      "agentSlug": "writer-2",
+      "reportsTo": "editor-in-chief"
+    },
+    {
+      "agentSlug": "writer-3",
+      "reportsTo": "editor-in-chief"
+    },
+    {
+      "agentSlug": "seo-analyst",
+      "reportsTo": "editor-in-chief"
+    },
+    {
+      "agentSlug": "social-manager",
+      "reportsTo": "editor-in-chief"
+    }
+  ],
+  "governance": {
+    "approvalRules": [
+      {
+        "trigger": "hire_agent",
+        "threshold": null,
+        "approverRole": "editor"
+      },
+      {
+        "trigger": "budget_exceed",
+        "threshold": 10000,
+        "approverRole": "editor"
+      },
+      {
+        "trigger": "publish_content",
+        "threshold": null,
+        "approverRole": "editor"
+      }
+    ],
+    "budgetDefaults": [
+      {
+        "role": "editor",
+        "monthlyCents": 40000
+      },
+      {
+        "role": "writer",
+        "monthlyCents": 26667
+      },
+      {
+        "role": "seo",
+        "monthlyCents": 25000
+      },
+      {
+        "role": "social",
+        "monthlyCents": 25000
+      }
+    ],
+    "escalationChain": ["editor-in-chief"]
+  },
+  "projects": [
+    {
+      "name": "Content Production",
+      "description": "Main content creation and publishing workspace",
+      "workspace": {
+        "cwd": null,
+        "repoUrl": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "approvalRules": [
+    {
+      "trigger": "hire_agent",
+      "threshold": null,
+      "approverRole": "editor",
+      "description": "Editor-in-Chief approves all new agent hires"
+    },
+    {
+      "trigger": "budget_exceed",
+      "threshold": 10000,
+      "approverRole": "editor",
+      "description": "Editor approval required for expenses over $100"
+    },
+    {
+      "trigger": "publish_content",
+      "threshold": null,
+      "approverRole": "editor",
+      "description": "Editor reviews all content before publishing"
+    }
+  ],
+  "budgetDefaults": [
+    {
+      "role": "editor",
+      "monthlyCents": 40000,
+      "description": "$400/month for editorial leadership"
+    },
+    {
+      "role": "writer",
+      "monthlyCents": 26667,
+      "description": "$267/month per writer for content creation"
+    },
+    {
+      "role": "seo",
+      "monthlyCents": 25000,
+      "description": "$250/month for SEO and analytics"
+    },
+    {
+      "role": "social",
+      "monthlyCents": 25000,
+      "description": "$250/month for social media management"
+    }
+  ],
+  "escalationChain": [
+    {
+      "level": 1,
+      "role": "editor-in-chief",
+      "description": "All issues escalate to Editor-in-Chief"
+    }
+  ],
+  "policies": {
+    "editorialReviewRequired": true,
+    "plagiarismCheckRequired": true,
+    "factCheckingRequired": true,
+    "brandVoiceConsistency": true,
+    "seoOptimizationRequired": true
+  }
+}

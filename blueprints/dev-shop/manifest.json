@@ -1,0 +1,195 @@
+{
+  "listingId": "dev-shop-v1",
+  "companyDefaults": {
+    "name": "Dev Shop",
+    "defaultModel": "claude-sonnet-4-6",
+    "defaultAdapter": "claude_local"
+  },
+  "agents": [
+    {
+      "slug": "cto",
+      "name": "CTO",
+      "role": "cto",
+      "title": "Chief Technology Officer",
+      "icon": "⚙️",
+      "capabilities": "Technical leadership, client architecture, code review, team coordination, delivery management",
+      "promptTemplate": "./agents/cto/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "high",
+        "maxTurnsPerRun": 200
+      },
+      "instructionsPath": "./agents/cto/AGENTS.md",
+      "skills": ["code-review", "simplify", "explore", "paperclip"],
+      "budgetMonthlyCents": 45000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": true
+      }
+    },
+    {
+      "slug": "engineer-1",
+      "name": "Senior Engineer",
+      "role": "engineer",
+      "title": "Senior Software Engineer",
+      "icon": "💻",
+      "capabilities": "Full-stack development, client communication, architecture, mentorship, complex features",
+      "promptTemplate": "./agents/engineer-1/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "high",
+        "maxTurnsPerRun": 300
+      },
+      "instructionsPath": "./agents/engineer-1/AGENTS.md",
+      "skills": ["code-review", "simplify", "explore", "claude-api"],
+      "budgetMonthlyCents": 35000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": false
+      }
+    },
+    {
+      "slug": "engineer-2",
+      "name": "Engineer",
+      "role": "engineer",
+      "title": "Software Engineer",
+      "icon": "💻",
+      "capabilities": "Feature implementation, bug fixes, testing, documentation, client project work",
+      "promptTemplate": "./agents/engineer-2/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "high",
+        "maxTurnsPerRun": 300
+      },
+      "instructionsPath": "./agents/engineer-2/AGENTS.md",
+      "skills": ["simplify", "explore", "claude-api"],
+      "budgetMonthlyCents": 30000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": false
+      }
+    },
+    {
+      "slug": "qa",
+      "name": "QA Engineer",
+      "role": "qa",
+      "title": "QA Engineer",
+      "icon": "✅",
+      "capabilities": "Testing strategy, test automation, bug reporting, quality assurance, release validation",
+      "promptTemplate": "./agents/qa/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "maxTurnsPerRun": 200
+      },
+      "instructionsPath": "./agents/qa/AGENTS.md",
+      "skills": ["explore", "paperclip"],
+      "budgetMonthlyCents": 25000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": false
+      }
+    },
+    {
+      "slug": "devops",
+      "name": "DevOps Engineer",
+      "role": "devops",
+      "title": "DevOps Engineer",
+      "icon": "🚀",
+      "capabilities": "CI/CD pipelines, infrastructure, deployments, monitoring, performance optimization, security",
+      "promptTemplate": "./agents/devops/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "maxTurnsPerRun": 200
+      },
+      "instructionsPath": "./agents/devops/AGENTS.md",
+      "skills": ["explore", "paperclip"],
+      "budgetMonthlyCents": 30000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": false
+      }
+    }
+  ],
+  "reportingChain": [
+    {
+      "agentSlug": "cto",
+      "reportsTo": null
+    },
+    {
+      "agentSlug": "engineer-1",
+      "reportsTo": "cto"
+    },
+    {
+      "agentSlug": "engineer-2",
+      "reportsTo": "cto"
+    },
+    {
+      "agentSlug": "qa",
+      "reportsTo": "cto"
+    },
+    {
+      "agentSlug": "devops",
+      "reportsTo": "cto"
+    }
+  ],
+  "governance": {
+    "approvalRules": [
+      {
+        "trigger": "hire_agent",
+        "threshold": null,
+        "approverRole": "cto"
+      },
+      {
+        "trigger": "budget_exceed",
+        "threshold": 10000,
+        "approverRole": "cto"
+      },
+      {
+        "trigger": "deploy_client_production",
+        "threshold": null,
+        "approverRole": "cto"
+      },
+      {
+        "trigger": "client_scope_change",
+        "threshold": null,
+        "approverRole": "cto"
+      }
+    ],
+    "budgetDefaults": [
+      {
+        "role": "cto",
+        "monthlyCents": 45000
+      },
+      {
+        "role": "engineer",
+        "monthlyCents": 32500
+      },
+      {
+        "role": "qa",
+        "monthlyCents": 25000
+      },
+      {
+        "role": "devops",
+        "monthlyCents": 30000
+      }
+    ],
+    "escalationChain": ["cto"]
+  },
+  "projects": [
+    {
+      "name": "Client Projects",
+      "description": "Workspace for client delivery work",
+      "workspace": {
+        "cwd": null,
+        "repoUrl": null
+      }
+    }
+  ]
+}
