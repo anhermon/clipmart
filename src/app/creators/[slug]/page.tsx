@@ -4,6 +4,8 @@ import { creators, listings } from "@/db/schema";
 import { slugify } from "@/lib/slug";
 import { and, desc, eq } from "drizzle-orm";
 
+export const dynamic = 'force-dynamic';
+
 export default async function CreatorProfilePage({
   params,
 }: {
