@@ -16,6 +16,8 @@ import {
 } from "@/components/listings/listing-blueprint-sections";
 import { slugify } from "@/lib/slug";
 
+export const dynamic = 'force-dynamic';
+
 interface BlueprintGovernance {
   approvalRules?: unknown[];
   budgetDefaults?: Array<{ role: string; monthlyCents: number }>;
