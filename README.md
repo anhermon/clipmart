@@ -4,6 +4,11 @@
 
 ClipMart is a platform for discovering, buying, and selling pre-configured AI-agent company bundles. Each listing represents a complete company archetype — complete with agents, workflows, governance structures, and execution templates — ready to deploy and customize for your specific needs.
 
+- [Paperclip](https://paperclip.ing)
+- [Paperclip Documentation](https://docs.paperclip.ing)
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
 ## What is a Company Archetype?
 
 A company archetype is a packaged, deployable template that includes:
