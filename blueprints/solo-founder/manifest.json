@@ -1,0 +1,164 @@
+{
+  "listingId": "solo-founder-v1",
+  "companyDefaults": {
+    "name": "Solo Founder + Crew",
+    "defaultModel": "claude-sonnet-4-6",
+    "defaultAdapter": "claude_local"
+  },
+  "agents": [
+    {
+      "slug": "ceo",
+      "name": "CEO",
+      "role": "ceo",
+      "title": "Chief Executive Officer",
+      "icon": "👔",
+      "capabilities": "Strategic leadership, decision-making, cross-functional coordination, high-level priorities",
+      "promptTemplate": "./agents/ceo/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-opus-4-6",
+        "effort": "high",
+        "maxTurnsPerRun": 150
+      },
+      "instructionsPath": "./agents/ceo/AGENTS.md",
+      "skills": ["research", "search", "paperclip"],
+      "budgetMonthlyCents": 35000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": true
+      }
+    },
+    {
+      "slug": "engineer",
+      "name": "Full-Stack Engineer",
+      "role": "engineer",
+      "title": "Full-Stack Engineer",
+      "icon": "💻",
+      "capabilities": "End-to-end product development, MVP building, bug fixes, deployments, technical decisions",
+      "promptTemplate": "./agents/engineer/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "high",
+        "maxTurnsPerRun": 300
+      },
+      "instructionsPath": "./agents/engineer/AGENTS.md",
+      "skills": ["code-review", "simplify", "explore", "claude-api"],
+      "budgetMonthlyCents": 30000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": false
+      }
+    },
+    {
+      "slug": "marketer",
+      "name": "Growth Marketer",
+      "role": "marketer",
+      "title": "Growth Marketer",
+      "icon": "📊",
+      "capabilities": "Content marketing, SEO, social media, growth experiments, analytics, user acquisition",
+      "promptTemplate": "./agents/marketer/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "maxTurnsPerRun": 150
+      },
+      "instructionsPath": "./agents/marketer/AGENTS.md",
+      "skills": ["research", "search", "paperclip"],
+      "budgetMonthlyCents": 25000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": false
+      }
+    },
+    {
+      "slug": "ops-manager",
+      "name": "Operations Manager",
+      "role": "ops",
+      "title": "Operations Manager",
+      "icon": "⚡",
+      "capabilities": "Customer support, process management, tool administration, documentation, team coordination",
+      "promptTemplate": "./agents/ops-manager/prompt.md",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "maxTurnsPerRun": 150
+      },
+      "instructionsPath": "./agents/ops-manager/AGENTS.md",
+      "skills": ["research", "paperclip"],
+      "budgetMonthlyCents": 20000,
+      "permissions": {
+        "canCreateAgents": false,
+        "canApproveHires": false
+      }
+    }
+  ],
+  "reportingChain": [
+    {
+      "agentSlug": "ceo",
+      "reportsTo": null
+    },
+    {
+      "agentSlug": "engineer",
+      "reportsTo": "ceo"
+    },
+    {
+      "agentSlug": "marketer",
+      "reportsTo": "ceo"
+    },
+    {
+      "agentSlug": "ops-manager",
+      "reportsTo": "ceo"
+    }
+  ],
+  "governance": {
+    "approvalRules": [
+      {
+        "trigger": "hire_agent",
+        "threshold": null,
+        "approverRole": "ceo"
+      },
+      {
+        "trigger": "budget_exceed",
+        "threshold": 5000,
+        "approverRole": "ceo"
+      },
+      {
+        "trigger": "major_decision",
+        "threshold": null,
+        "approverRole": "ceo"
+      }
+    ],
+    "budgetDefaults": [
+      {
+        "role": "ceo",
+        "monthlyCents": 35000
+      },
+      {
+        "role": "engineer",
+        "monthlyCents": 30000
+      },
+      {
+        "role": "marketer",
+        "monthlyCents": 25000
+      },
+      {
+        "role": "ops",
+        "monthlyCents": 20000
+      }
+    ],
+    "escalationChain": ["ceo"]
+  },
+  "projects": [
+    {
+      "name": "Main Product",
+      "description": "Primary product development and operations workspace",
+      "workspace": {
+        "cwd": null,
+        "repoUrl": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "nodes": [
+    {
+      "id": "ceo",
+      "name": "CEO",
+      "role": "ceo",
+      "title": "Chief Executive Officer",
+      "icon": "👔",
+      "level": 0
+    },
+    {
+      "id": "engineer",
+      "name": "Full-Stack Engineer",
+      "role": "engineer",
+      "title": "Full-Stack Engineer",
+      "icon": "💻",
+      "level": 1,
+      "parent": "ceo"
+    },
+    {
+      "id": "marketer",
+      "name": "Growth Marketer",
+      "role": "marketer",
+      "title": "Growth Marketer",
+      "icon": "📊",
+      "level": 1,
+      "parent": "ceo"
+    },
+    {
+      "id": "ops-manager",
+      "name": "Operations Manager",
+      "role": "ops",
+      "title": "Operations Manager",
+      "icon": "⚡",
+      "level": 1,
+      "parent": "ceo"
+    }
+  ],
+  "edges": [
+    {
+      "from": "ceo",
+      "to": "engineer",
+      "type": "reports_to"
+    },
+    {
+      "from": "ceo",
+      "to": "marketer",
+      "type": "reports_to"
+    },
+    {
+      "from": "ceo",
+      "to": "ops-manager",
+      "type": "reports_to"
+    }
+  ]
+}
